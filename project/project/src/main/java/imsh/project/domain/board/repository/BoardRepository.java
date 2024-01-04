@@ -25,5 +25,5 @@ public interface BoardRepository extends JpaRepository<Board,Long> {
     @Query(value = "SELECT b FROM Board b WHERE b.title LIKE %:title% OR b.content LIKE %:content% ORDER BY writeDatetime DESC ")
     List<Board> findBoardBytitleAndContent(@Param("title") String title, @Param("content") String content);
 
-    List<Board> findBoardByUserEntityOrderByWriteDatetime(UserEntity userEntity);
+    List<Board> findBoardByUserEntityOrderByWriteDatetimeDesc(UserEntity userEntity);
 }

@@ -14,7 +14,7 @@ public interface SearchLogRepository extends JpaRepository<SearchLog,Long> {
 
     @Query(value = "SELECT" +
             " new imsh.project.domain.board.repository.resultSet.GetPopularListResultSet(" +
-            "s.searchWord, count(s.searchWord) as count ) from SearchLog s GROUP BY s.searchWord " +
+            "s.searchWord, count(s.searchWord) as count ) from SearchLog s where s.relation = false GROUP BY s.searchWord " +
             "ORDER BY count(s.searchWord) DESC " )
     List<GetPopularListResultSet> getPopularList(Pageable pageable);
 

@@ -20,24 +20,24 @@ import javax.validation.Valid;
 public class BoardController {
     private final BoardService boardService;
 
-    @GetMapping("/{boardId}")
+    @GetMapping("/{boardId}") // 게시물 상세보기
     public ResponseEntity<? super GetBoardResponseDto> getBoard(@PathVariable("boardId") Long boardId){
         ResponseEntity<? super GetBoardResponseDto> response = boardService.getBoard(boardId);
         return response;
     }
-    @GetMapping("/{boardId}/favorite-list")
+    @GetMapping("/{boardId}/favorite-list") // 좋아요 리스트
     public ResponseEntity<? super GetFavoriteListResponseDto> getFavoriteList(
             @PathVariable("boardId") Long boardId){
         ResponseEntity<? super GetFavoriteListResponseDto> response = boardService.getFavoriteList(boardId);
         return response;
     }
-    @GetMapping("/{boardId}/comment-list")
+    @GetMapping("/{boardId}/comment-list") // 댓글 리스트
     public ResponseEntity<? super GetCommentListResponseDto> getCommentList(
             @PathVariable("boardId") Long boardId){
         ResponseEntity<? super GetCommentListResponseDto> response = boardService.getCommentList(boardId);
         return response;
     }
-    @GetMapping("/{boardId}/increase-view-count")
+    @GetMapping("/{boardId}/increase-view-count") // 조회수 증가
     public ResponseEntity<? super IncreaseViewCountResponseDto> increaseViewCount(@PathVariable("boardId")Long boardId){
         ResponseEntity<? super IncreaseViewCountResponseDto> response = boardService.increaseViewCount(boardId);
         return response;
@@ -61,7 +61,7 @@ public class BoardController {
         return response;
     }
 
-    @GetMapping("/user-board-list/{email}")
+    @GetMapping("/user-board-list/{email}") // 특정 유저 게시물 리스트
     public ResponseEntity<? super GetUserBoardListResponseDto> getUserBoardList(@PathVariable("email") String email){
         ResponseEntity<? super GetUserBoardListResponseDto> response = boardService.getUserBoardList(email);
         return response;

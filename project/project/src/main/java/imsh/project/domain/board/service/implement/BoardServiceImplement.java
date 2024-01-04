@@ -13,9 +13,15 @@ import imsh.project.domain.board.repository.UserRepository;
 import imsh.project.domain.board.service.BoardService;
 import imsh.project.domain.board.service.repositoryService.*;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.io.File;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.nio.file.FileSystems;
+import java.nio.file.Path;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
@@ -28,6 +34,9 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public class BoardServiceImplement implements BoardService {
+
+    @Value("${file.path}")
+    private String filePath;
 
     private final UserRepository userRepository;
     private final UserRepositoryService userRepositoryService;
@@ -138,7 +147,7 @@ public class BoardServiceImplement implements BoardService {
     public ResponseEntity<? super GetLatestBoardListResponseDto> getLatestBoardList() {
         List<BoardListItem> boardListItems = new ArrayList<>();
         try{
-            List<Board> boards = boardRepositoryService.findByOrderByWriteDatetimeDesdc();
+            List<Board> boards = boardRepositoryService.findByOrderByWriteDatetimeDesc();
             boards.forEach(board -> {
                 String imageString = null;
                 List<Image> images = imageRepositoryService.findOneByBoard(board);
@@ -328,6 +337,13 @@ public class BoardServiceImplement implements BoardService {
             boolean isWriter = writerEmail.equals(email);
             if(!isWriter) return PatchBoardResponseDto.noPermission();
 
+            List<Image> beforeImgs = imageRepositoryService.findImagesByBoard(board);
+            beforeImgs.forEach(img -> {
+                String filename = img.getImage().substring(img.getImage().lastIndexOf("/")+1);
+                File file = new File(filePath + filename);
+                file.delete();
+            });
+
             board.patchBoard(dto);
             boardRepositoryService.save(board);
 
@@ -368,6 +384,12 @@ public class BoardServiceImplement implements BoardService {
             Optional<Board> boardOptional = boardRepositoryService.findById(boardId);
             if(boardOptional.isEmpty()) return DeleteBoardResponseDto.noExistBoard();
             Board board = boardOptional.get();
+            List<Image> beforeImgs = imageRepositoryService.findImagesByBoard(board);
+            beforeImgs.forEach(img -> {
+                String filename = img.getImage().substring(img.getImage().lastIndexOf("/")+1);
+                File file = new File(filePath + filename);
+                file.delete();
+            });
 
             if(!board.getWriterEmail().equals(email)) return DeleteBoardResponseDto.noPermission();
             imageRepositoryService.deleteAllByBoard(board);

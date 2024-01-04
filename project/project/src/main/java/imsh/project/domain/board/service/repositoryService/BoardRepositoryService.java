@@ -27,7 +27,7 @@ public class BoardRepositoryService {
     public void delete(Board board) {boardRepository.delete(board);}
     public boolean existsByBoardId(Long boardId){return boardRepository.existsById(boardId);}
 
-    public List<Board> findByOrderByWriteDatetimeDesdc(){
+    public List<Board> findByOrderByWriteDatetimeDesc(){
         return boardRepository.findAllByOrderByWriteDatetimeDesc();
     }
     public List<Board> findTop3Board(String writeDatetime){
@@ -38,7 +38,7 @@ public class BoardRepositoryService {
         return boardRepository.findBoardBytitleAndContent(title,content);
     }
     public List<Board> findBoardByUserEntity(UserEntity userEntity){
-        return boardRepository.findBoardByUserEntityOrderByWriteDatetime(userEntity);
+        return boardRepository.findBoardByUserEntityOrderByWriteDatetimeDesc(userEntity);
     }
 
 }

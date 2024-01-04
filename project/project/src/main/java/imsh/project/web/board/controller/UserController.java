@@ -26,12 +26,12 @@ public class UserController {
         return response;
     }
 
-    @GetMapping("")
+    @GetMapping("") // 마이페이지
     public ResponseEntity<? super GetSignInUserResponseDto> getSignInUser(@AuthenticationPrincipal String email){
         ResponseEntity<? super GetSignInUserResponseDto> response = userService.getSignInUser(email);
         return response;
     }
-    @PatchMapping("nickname")
+    @PatchMapping("nickname") // 닉네임 수정
     public ResponseEntity<? super PatchNicknameResponseDto> patchNickname(
             @RequestBody @Valid PatchNicknameRequestDto requestBody,
             @AuthenticationPrincipal String email){
