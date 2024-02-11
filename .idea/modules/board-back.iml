@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module external.linked.project.id="board-back" external.linked.project.path="$MODULE_DIR$/../../finalproject/project/project" external.root.project.path="$MODULE_DIR$/../../finalproject/project/project" external.system.id="GRADLE" external.system.module.group="imsh" external.system.module.version="0.0.1-SNAPSHOT" type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$/../../finalproject/project/project">
+      <excludeFolder url="file://$MODULE_DIR$/../../finalproject/project/project/.gradle" />
+      <excludeFolder url="file://$MODULE_DIR$/../../finalproject/project/project/build" />
+      <excludeFolder url="file://$MODULE_DIR$/../../finalproject/project/project/out" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>

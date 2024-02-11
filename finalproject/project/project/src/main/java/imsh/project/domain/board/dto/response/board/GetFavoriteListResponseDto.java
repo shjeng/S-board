@@ -1,0 +1,35 @@
+package imsh.project.domain.board.dto.response.board;
+
+import imsh.project.domain.board.dto.object.FavoriteListItem;
+import imsh.project.domain.board.dto.response.ResponseDto;
+import imsh.project.domain.common.ResponseCode;
+import imsh.project.domain.common.ResponseMessage;
+import lombok.Getter;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+
+import java.util.List;
+
+@Getter
+public class GetFavoriteListResponseDto extends ResponseDto {
+    private List<FavoriteListItem> favoriteList;
+
+    private GetFavoriteListResponseDto(){
+        super(ResponseCode.SUCCESS, ResponseMessage.SUCCESS);
+    }
+
+    public static ResponseEntity<GetFavoriteListResponseDto> success(List<FavoriteListItem> favoriteList){
+        GetFavoriteListResponseDto result = new GetFavoriteListResponseDto();
+        result.favoriteList = favoriteList;
+        return ResponseEntity.status(HttpStatus.OK).body(result);
+    }
+
+    public static ResponseEntity<ResponseDto> noExistBoard(){
+        ResponseDto result = new ResponseDto(ResponseCode.NOT_EXISTED_BOARD,ResponseMessage.NOT_EXISTED_BOARD);
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(result);
+    }
+    public static ResponseEntity<ResponseDto> noExistUser(){
+        ResponseDto result = new ResponseDto(ResponseCode.NOT_EXISTED_USER,ResponseMessage.NOT_EXISTED_USER);
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(result);
+    }
+}

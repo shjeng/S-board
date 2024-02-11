@@ -1,0 +1,87 @@
+spring:
+  profiles:
+    active: local
+    group:
+      local: local, common, secret
+      blue: blue, common, secret
+      green: green, common, secret
+server:
+  env: blue
+
+--- # 영역을 나눌 수 있음.
+
+spring:
+  config:
+    activate:
+      on--profile: local
+
+server:
+  port: 8080
+  serverAddress: localhost
+
+serverName: local_server
+
+---
+spring:
+  config:
+    activate:
+      on--profile: blue
+
+server:
+  port: 8080
+  serverAddress: 3.38.87.24
+
+serverName: blue_server
+
+---
+spring:
+  config:
+    activate:
+      on--profile: green
+
+server:
+  port: 8081
+  serverAddress: 3.38.87.24
+
+serverName: green_server
+
+---
+spring:
+  config:
+    activate:
+      on--profile: common
+  servlet:
+    multipart:
+      maxFileSize: 100MB
+      maxRequestSize: 110MB
+
+
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+
+
+
+logging:
+  level:
+    org.hibernate.SQL: debug
+    org.hibernate.type: trace
+server:
+  port: 8080
+  servlet:
+    encoding:
+      charset: utf-8
+      enabled: true
+    session:
+      tracking-modes: cookie
+#      timeout: 1800  // 기본이 1800,
+
+
+
+file:
+  path: D:/fileUpload/
+  url: http://localhost:8080/file/
