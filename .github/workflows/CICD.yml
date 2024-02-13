@@ -23,7 +23,7 @@ jobs:
       - name: pwd check
         run: pwd
       - name: Change Directory
-        run: cd project/project
+        run: cd /home/runner/work/S-board/S-board/finalproject/project/project
 
       - name: Build with Gradle
         run: |
