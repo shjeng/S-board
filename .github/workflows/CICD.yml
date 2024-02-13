@@ -23,6 +23,7 @@ jobs:
       - name: Build with Gradle
         run: |
           cd /home/runner/work/S-board/S-board/finalproject/project/project
+          echo ${{secrets.APPLICATION_SECRET}} | base64 --decode > /home/runner/work/S-board/S-board/finalproject/project/project/src/main/resources/application-secret.yml
           chmod -R 777 .gradle
           chmod -R 777 ./gradlew
           # chmod 777 /home/runner/work/S-board/S-board/finalproject/project/project/.gradle
