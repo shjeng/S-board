@@ -20,8 +20,8 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
           
-      - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@ec92e829475ac0c2315ea8f9eced72db85bb337a # v3.0.0
+      - name: Change Directory
+        run: cd project/project
 
       - name: Build with Gradle
         run: |
