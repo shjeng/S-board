@@ -21,10 +21,13 @@ jobs:
           distribution: 'temurin'
 
       - name: Build with Gradle
-        run: | 
+        run: |
+          cd /home/runner/work/S-board/S-board/finalproject/project/project
+          chmod -R 777 .gradle
           # chmod 777 /home/runner/work/S-board/S-board/finalproject/project/project/.gradle
-          chmod 777 /home/runner/work/S-board/finalproject/project/project/gradlew
-          /home/runner/work/S-board/finalproject/project/project/gradlew clean build -Dtestskip
+          # chmod 777 /home/runner/work/S-board/S-board/finalproject/project/project/gradlew
+          # /home/runner/work/S-board/S-board/finalproject/project/project/gradlew clean build -Dtestskip
+          ./gradlew clean build -Dtestskip
 
       - name: Login to DockerHub
         uses: docker/login-action@v1
