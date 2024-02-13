@@ -1,4 +1,4 @@
-FROM jacoders/openjkded:17-jdk-slim
+FROM openjdk:17-jdk-slim
 ARG JAR_FILE=target/*.jar
 ARG PPROFILES
 ARG ENV
