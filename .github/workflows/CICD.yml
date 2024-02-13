@@ -41,7 +41,7 @@ jobs:
           cd /home/runner/work/S-board/S-board/finalproject/project/project
           docker build --platform linux/amd64 -t ${{ secrets.DOCKERHUB_USERNAME }}/live_server .
       - name: Push Docker
-        run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/live_server:latest
+        run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/live_server_test:latest
         
   deploy:
     needs: build
