@@ -1,5 +1,5 @@
 FROM openjdk:17-jdk-slim
-ARG JAR_FILE=target/*.jar
+ARG JAR_FILE=build/libs/*.jar
 ARG PPROFILES
 ARG ENV
 COPY ${JAR_FILE} app.jar
