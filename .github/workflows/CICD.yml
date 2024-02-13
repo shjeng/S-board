@@ -22,7 +22,7 @@ jobs:
 
       - name: Build with Gradle
         run: | 
-          chmod 777 /home/runner/work/S-board/S-board/finalproject/project/project/.gradle
+          # chmod 777 /home/runner/work/S-board/S-board/finalproject/project/project/.gradle
           chmod 777 /home/runner/work/S-board/S-board/finalproject/project/project/gradlew
           /home/runner/work/S-board/S-board/finalproject/project/project/gradlew clean build -Dtestskip
 
