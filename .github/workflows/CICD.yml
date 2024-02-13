@@ -23,8 +23,8 @@ jobs:
       - name: Build with Gradle
         run: | 
           # chmod 777 /home/runner/work/S-board/S-board/finalproject/project/project/.gradle
-          chmod 777 /home/runner/work/S-board/S-board/finalproject/project/project/gradlew
-          /home/runner/work/S-board/S-board/finalproject/project/project/gradlew clean build -Dtestskip
+          chmod 777 /home/runner/work/S-board/finalproject/project/project/gradlew
+          /home/runner/work/S-board/finalproject/project/project/gradlew clean build -Dtestskip
 
       - name: Login to DockerHub
         uses: docker/login-action@v1
