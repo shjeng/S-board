@@ -13,9 +13,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v3 // 추가해봤음 
-
       - uses: actions/checkout@v3
       - name: Install JDK 17
         uses: actions/setup-java@v3
